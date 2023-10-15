@@ -17,17 +17,8 @@
 
     let lastMouseX : number;
 
-    function snap() {
-        let closest : number = 0;
-        for(const snap of snaps) {
-            if(Math.abs(margin - snap) < Math.abs(margin - closest)) closest = snap;
-        }
-        
-        margin = closest;
-    }
-
-    function handlemousedown(mouse : MouseEvent) {
-        lastMouseX = mouse.x;
+    function handlemousedown(x : number) {
+        lastMouseX = x;
         mouseup = false;
     }
 
@@ -36,23 +27,33 @@
         mouseup = true;
     }
 
-    function handlemousemove(mouse : MouseEvent) {
+    function handlemousemove(x : number) {
         if(mouseup) return;
 
-        margin = Math.min(margin + (mouse.x - lastMouseX) * speed, 0);
+        margin = Math.max(Math.min(margin + (x - lastMouseX) * speed, 0), snaps[snaps.length - 1]);
 
-        lastMouseX = mouse.x;
+        lastMouseX = x;
     }
 
     function calculateSnaps() {
         snaps = [];
+
         let snapX = 0;
         for(const child of content.children) {
             snaps.push(snapX);
             snapX -= child.clientWidth;
         }
-        
+
         snap();
+    }
+
+    function snap() {
+        let closest : number = 0;
+        for(const snap of snaps) {
+            if(Math.abs(margin - snap) < Math.abs(margin - closest)) closest = snap;
+        }
+        
+        margin = closest;
     }
 
     onMount(() => {
@@ -63,10 +64,8 @@
 
 <style>
     #carousel {
-        height: 100vh;
         display:flex;
         flex-direction: row;
-        overflow-x: hidden;
     }
 
     .mouseup {
@@ -74,14 +73,20 @@
     }
 
     #carouselFrame {
-        width: 50vw;
-        overflow-x: hidden;
+        overflow: hidden;
     }
 </style>
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
 <div id="carouselFrame" style="width:{width}">
-    <div on:mousedown={handlemousedown} on:mouseup={handlemouseup} on:mousemove={handlemousemove} class:mouseup id="carousel" style="margin-left:{margin}px;" bind:this={content}>
+    <div 
+    on:touchstart={touch => handlemousedown(touch.touches[0].pageX)} 
+    on:touchmove={touch => handlemousemove(touch.touches[0].pageX)} 
+    on:touchend={handlemouseup} 
+
+    on:mousedown={mouse => handlemousedown(mouse.x)} 
+    on:mousemove={mouse => handlemousemove(mouse.x)} 
+    on:mouseup={handlemouseup} 
+    class:mouseup id="carousel" style="margin-left:{margin}px;carousel" bind:this={content}>
         <slot/>
     </div>
 </div>
