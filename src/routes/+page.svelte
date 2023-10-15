@@ -1,40 +1,36 @@
-<script>
+<script lang="ts">
+    import Option from "$lib/ui/option/Option.svelte";
+    import OptionChoices from "$lib/ui/option/OptionChoices.svelte";
+    import Stackable from "$lib/ui/structure/Stackable.svelte";
+    import SingleChoice from "$lib/ui/option/SingleChoice.svelte"
     import CatlystCarousel from "$lib/carousel/CatlystCarousel.svelte";
-
 </script>
 
-<style>
-    div {
-        min-width: 100vw;
-        max-width: 100vw;
-        user-select: none;
-    }
-</style>
-
-<CatlystCarousel speed={5}>
-    <div>
-        <h1>page 1</h1>
-        <thing>sdfkjn</thing>
+<CatlystCarousel speed={2}>
+    <div style="min-width:100vw;max-width:100vw;height:100vw">
+        <OptionChoices let:selected let:select>
+            {#each ["up", "down", "right", "left"] as option, id}
+                <Option id={id} handleClick={select}>
+                    <Stackable stack={id != 0}>
+                        <SingleChoice id={id} selected={selected}>
+                            {option}
+                        </SingleChoice>
+                    </Stackable>
+                </Option>
+            {/each}
+        </OptionChoices>
     </div>
-    <div>
-        <h1>page 2</h1>
-        <thing>ewjkfs</thing>
-    </div>
-    <div>
-        <h1>page 3</h1>
-        <thing>ewjkfs</thing>
-    </div>
-    <div>
-        <h1>page 4</h1>
-        <thing>ewjkfs</thing>
-    </div>
-    <div>
-        <h1>page 5</h1>
-        <thing>ewjkfs</thing>
-        <button on:click={() => console.log('clicked!')}>click me</button>
-    </div>
-    <div>
-        <h1>page 6</h1>
-        <thing>ewjkfs</thing>
+    <div style="min-width:100vw;max-width:100vw;height:100vw">
+        <OptionChoices let:selected let:select>
+            {#each ["one", "two", "three", "four"] as option, id}
+                <Option id={id} handleClick={select}>
+                    <Stackable stack={id != 0}>
+                        <SingleChoice id={id} selected={selected}>
+                            {option}
+                        </SingleChoice>
+                    </Stackable>
+                </Option>
+            {/each}
+        </OptionChoices>
     </div>
 </CatlystCarousel>

@@ -78,6 +78,8 @@
 </style>
 
 <div id="carouselFrame" style="width:{width}">
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <!-- svelte-ignore a11y-mouse-events-have-key-events -->
     <div 
     on:touchstart={touch => handlemousedown(touch.touches[0].pageX)} 
     on:touchmove={touch => handlemousemove(touch.touches[0].pageX)} 
@@ -86,6 +88,8 @@
     on:mousedown={mouse => handlemousedown(mouse.x)} 
     on:mousemove={mouse => handlemousemove(mouse.x)} 
     on:mouseup={handlemouseup} 
+
+    on:mouseleave={handlemouseup}
     class:mouseup id="carousel" style="margin-left:{margin}px;carousel" bind:this={content}>
         <slot/>
     </div>
