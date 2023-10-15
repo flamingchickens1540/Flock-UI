@@ -1,8 +1,9 @@
 {
-	"name": "scouting-app-cookiecutter-components",
+	"name": "flock-ui",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
+		"dev-host" : "vite dev --host",
 		"build": "vite build && npm run package",
 		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",

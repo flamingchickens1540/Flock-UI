@@ -3,9 +3,13 @@
 <script lang="ts">
     import { onMount } from "svelte";
 
-    export let speed : number = 1;
+    export let style : string = "";
 
-    export let width : string = "100vw";
+    export let speed : number = 2;
+
+    export let snapSeconds : number = 0.2;
+
+    export let shouldSnap : boolean = true;
 
     let snaps : number[];
 
@@ -23,7 +27,7 @@
     }
 
     function handlemouseup() {
-        snap();
+        if(shouldSnap) snap();
         mouseup = true;
     }
 
@@ -69,7 +73,8 @@
     }
 
     .mouseup {
-        transition: margin 0.2s ease-in-out;
+        transition-property: margin;
+        transition-timing-function: ease-in-out;
     }
 
     #carouselFrame {
@@ -77,7 +82,7 @@
     }
 </style>
 
-<div id="carouselFrame" style="width:{width}">
+<div  id="carouselFrame" style={style}>
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <!-- svelte-ignore a11y-mouse-events-have-key-events -->
     <div 
@@ -90,7 +95,7 @@
     on:mouseup={handlemouseup} 
 
     on:mouseleave={handlemouseup}
-    class:mouseup id="carousel" style="margin-left:{margin}px;carousel" bind:this={content}>
+    class:mouseup id="carousel" style="transition-duration:{snapSeconds}s;margin-left:{margin}px;carousel" bind:this={content}>
         <slot/>
     </div>
 </div>

@@ -2,6 +2,14 @@
     export let selected : number = 0;
 
     export let id : number;
+
+    export let toggled : boolean = false;
+
+    $: {
+        if(selected == id) {
+            toggled = !toggled;
+        }
+    }
 </script>
 
 <style>
@@ -10,15 +18,15 @@
         border-width: 2px;
         margin:0px;
         border-style: solid;
-        border-radius: 7px;
+        border-radius: 4px;
         padding: 5px;
-        background-color: white;
+        background-color: #efdcdc;
     }
 
-    .selected {
-        background-color: #7ed957;
+    .toggled {
+        background-color: aqua;
         font-weight: bold;
     }
 </style>
 
-<div class:selected={selected == id}><slot/></div>
+<div class:toggled><slot/></div>
