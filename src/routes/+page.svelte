@@ -1,7 +1,8 @@
 <script lang="ts">
     import CatlystCarousel from "$lib/carousel/CatlystCarousel.svelte";
-    import SingleChoices from "$lib/ui/option/singleChoice/SingleChoices.svelte";
-    import MultipleChoices from "$lib/ui/option/multipleChoice/MultipleChoices.svelte";
+    import SingleChoices from "$lib/template/singleChoice/SingleChoices.svelte";
+    import MultipleChoices from "$lib/template/multipleChoice/MultipleChoices.svelte";
+    import Score from "$lib/template/Score.svelte";
 </script>
 
 <style>
@@ -13,6 +14,7 @@
 
 <CatlystCarousel speed={2.5} style="margin:2.5vw">
     <div class="carriage">
+        <Score/>
         <SingleChoices/>
         <MultipleChoices/>
     </div>

@@ -2,4 +2,8 @@ export * from "./carousel/CatlystCarousel.svelte";
 export * from "./ui/structure/Stackable.svelte";
 export * from "./ui/option/Option.svelte";
 export * from "./ui/option/OptionChoices.svelte";
-export * from "./ui/option/singleChoice/SingleChoice.svelte";
+export * from "./template/singleChoice/SingleChoice.svelte";
+export * from "./template/singleChoice/SingleChoices.svelte"
+export * from "./template/multipleChoice/MultipleChoice.svelte";
+export * from "./template/multipleChoice/MultipleChoices.svelte";
+export * from "./template/Score.svelte";

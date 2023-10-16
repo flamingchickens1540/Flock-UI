@@ -5,6 +5,8 @@
 
     export let stack : boolean = false;
 
+    export let horizontal : boolean = false;
+
     function getPixels(pixels : string) {
         return Number(pixels.slice(0, pixels.length-2));
     }
@@ -14,11 +16,11 @@
         const style = element.style;
         const computedStyle = getComputedStyle(element);
 
-        style.paddingTop = `${getPixels(computedStyle.paddingBottom) - (getPixels(computedStyle.borderRadius) + getPixels(computedStyle.borderTopWidth))/2}px`
-        style.marginTop = `${-getPixels(computedStyle.borderRadius) - 1}px`;
-        style.borderTopLeftRadius = style.borderTopRightRadius = "0px";
+        style[horizontal ? "paddingLeft" : "paddingTop"] = `${getPixels(computedStyle[horizontal ? "paddingRight" : "paddingBottom"]) - (getPixels(computedStyle.borderRadius) + getPixels(computedStyle[horizontal ? "borderLeftWidth" : "borderTopWidth"]))/2}px`
+        style[horizontal ? "marginLeft" : "marginTop"] = `${-getPixels(computedStyle.borderRadius) - 1}px`;
+        style.borderTopLeftRadius = style[horizontal ? "borderBottomLeftRadius" : "borderTopRightRadius"] = "0px";
     });
 </script>
-<div bind:this={content}>
+<div bind:this={content} style="display:contents">
     <slot/>
 </div>
