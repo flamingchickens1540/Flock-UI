@@ -1,7 +1,5 @@
 <script lang="ts">
     import Stackable from "$lib/ui/structure/Stackable.svelte";
-    import Option from "$lib/ui/option/Option.svelte";
-    import OptionChoices from "$lib/ui/option/OptionChoices.svelte";
     import MultipleChoice from "./MultipleChoice.svelte";
 
     export let options : string[] = ["one", "two", "three", "four"];
@@ -31,9 +29,9 @@
             {name}
         </div>
     </Stackable>
-    {#each options as option, id}
+    {#each options as option}
         <Stackable stack>
-            <MultipleChoice id={id}>
+            <MultipleChoice>
                 {option}
             </MultipleChoice>
         </Stackable>

@@ -19,10 +19,12 @@
     <div class="carriage">
         <SingleChoices/>
         <MultipleChoices/>
+        <p>f</p>
     </div>
     <div class="carriage">
         <SingleChoices/>
         <MultipleChoices/>
+        <img src="src\routes\FC.png" alt="" width="100px" height="100px"/>
     </div>
     <div class="carriage">
         <SingleChoices/>

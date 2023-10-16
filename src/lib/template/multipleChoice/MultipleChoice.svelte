@@ -1,6 +1,4 @@
 <script lang="ts">
-    export let id : number;
-
     export let toggled : boolean = false;
 
     function handleClick() {

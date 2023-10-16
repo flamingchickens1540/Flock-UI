@@ -45,7 +45,7 @@
         let snapX = 0;
         for(const child of content.children) {
             snaps.push(snapX);
-            snapX -= child.clientWidth;
+            snapX -= child.clientWidth+0.5;
         }
 
         snap();
