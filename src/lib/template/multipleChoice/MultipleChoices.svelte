@@ -25,19 +25,17 @@
     }
 </style>
 
-<OptionChoices let:selected let:select>
+<div style="flex-direction:column;display:flex">
     <Stackable>
         <div class="buttonsTitle">
             {name}
         </div>
     </Stackable>
     {#each options as option, id}
-        <Option id={id} handleClick={select}>
-            <Stackable stack>
-                <MultipleChoice id={id} selected={selected}>
-                    {option}
-                </MultipleChoice>
-            </Stackable>
-        </Option>
+        <Stackable stack>
+            <MultipleChoice id={id}>
+                {option}
+            </MultipleChoice>
+        </Stackable>
     {/each}
-</OptionChoices>
+</div>

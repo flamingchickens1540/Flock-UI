@@ -6,4 +6,6 @@ export * from "./template/singleChoice/SingleChoice.svelte";
 export * from "./template/singleChoice/SingleChoices.svelte"
 export * from "./template/multipleChoice/MultipleChoice.svelte";
 export * from "./template/multipleChoice/MultipleChoices.svelte";
-export * from "./template/Score.svelte";
+export * from "./ui/setting/Score.svelte";
+export * from "./ui/setting/Star.svelte";
+export * from "./ui/setting/Switch.svelte";

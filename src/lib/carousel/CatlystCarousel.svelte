@@ -72,13 +72,10 @@
         flex-direction: row;
     }
 
-    .mouseup {
-        transition-property: margin;
-        transition-timing-function: ease-in-out;
-    }
-
     #carouselFrame {
         overflow: hidden;
+        transition-property: margin;
+        transition-timing-function: ease-in-out;
     }
 </style>
 
@@ -95,7 +92,7 @@
     on:mouseup={handlemouseup} 
 
     on:mouseleave={handlemouseup}
-    class:mouseup id="carousel" style="transition-duration:{snapSeconds}s;margin-left:{margin}px;carousel" bind:this={content}>
+    id="carousel" style="transition-duration:{mouseup ? snapSeconds : 0}s;margin-left:{margin}px;carousel" bind:this={content}>
         <slot/>
     </div>
 </div>
