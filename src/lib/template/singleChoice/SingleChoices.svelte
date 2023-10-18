@@ -1,7 +1,7 @@
 <script lang="ts">
     import Stackable from "$lib/ui/structure/Stackable.svelte";
-    import Option from "$lib/ui/option/Option.svelte";
-    import OptionChoices from "$lib/ui/option/OptionChoices.svelte";
+    import Option from "$lib/ui/structure/option/Option.svelte";
+    import OptionChoices from "$lib/ui/structure/option/OptionChoices.svelte";
     import SingleChoice from "./SingleChoice.svelte";
 
     export let options : string[] = ["up", "down", "right", "left"];
