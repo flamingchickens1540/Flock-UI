@@ -34,7 +34,7 @@
     function handlemousemove(x : number) {
         if(mouseup) return;
 
-        margin = Math.max(Math.min(margin + (x - lastMouseX) * speed, 0), snaps[snaps.length - 1]);
+        margin = Math.max(Math.min(margin + (x - lastMouseX) * speed, 0), -snaps[snaps.length - 1]);
 
         lastMouseX = x;
     }
@@ -42,10 +42,10 @@
     function calculateSnaps() {
         snaps = [];
 
-        let snapX = 0;
+        const offset = content.children[0].getBoundingClientRect().x
+
         for(const child of content.children) {
-            snaps.push(snapX);
-            snapX -= child.clientWidth+0.5;
+            snaps.push(child.getBoundingClientRect().left - offset);
         }
 
         snap();
@@ -54,10 +54,10 @@
     function snap() {
         let closest : number = 0;
         for(const snap of snaps) {
-            if(Math.abs(margin - snap) < Math.abs(margin - closest)) closest = snap;
+            if(Math.abs(margin + snap) < Math.abs(margin + closest)) closest = snap;
         }
         
-        margin = closest;
+        margin = -closest;
     }
 
     onMount(() => {
@@ -92,7 +92,10 @@
     on:mouseup={handlemouseup} 
 
     on:mouseleave={handlemouseup}
-    id="carousel" style="transition-duration:{mouseup ? snapSeconds : 0}s;margin-left:{margin}px;carousel" bind:this={content}>
+    id="carousel" style="
+    transition-duration:{mouseup ? snapSeconds : 0}s;
+    margin-left:{margin}px;
+    " bind:this={content}>
         <slot/>
     </div>
 </div>
