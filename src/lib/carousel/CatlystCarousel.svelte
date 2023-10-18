@@ -1,8 +1,22 @@
-<!-- Catlyst Carousel named such because...  -->
+<!-- 
+    @component
+
+    ```svelte
+    <CatlystCarousel style="margin:2.5vw" speed={2} snapSeconds={0.2} shouldSnap>
+        {elements}
+    </CatlystCarousel>
+    ```
+     - speed : speed of the carousel
+     - snapSeconds : how long it takes for the carousel to snap 
+     - shouldSnap : if the carousel should snap (defaults true)
+ -->
 
 <script lang="ts">
     import { onMount } from "svelte";
 
+    /**
+     * The style of the frame for the carousel.
+     */
     export let style : string = "";
 
     export let speed : number = 2;
@@ -79,7 +93,7 @@
     }
 </style>
 
-<div  id="carouselFrame" style={style}>
+<div id="carouselFrame" style={style}>
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <!-- svelte-ignore a11y-mouse-events-have-key-events -->
     <div 
@@ -89,7 +103,7 @@
 
     on:mousedown={mouse => handlemousedown(mouse.x)} 
     on:mousemove={mouse => handlemousemove(mouse.x)} 
-    on:mouseup={handlemouseup} 
+    on:mouseup={handlemouseup}
 
     on:mouseleave={handlemouseup}
     id="carousel" style="

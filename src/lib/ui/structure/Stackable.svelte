@@ -1,3 +1,18 @@
+<!-- 
+    @component
+
+    Component used to stack with an alike to the top or left of it.
+
+    ```svelte
+    <Stackable horizontal stack>
+        {elements}
+    </Stackable>
+
+     - should stack horizontaly (defaults false)
+     - stack should stack (defaults false)
+    ```
+ -->
+
 <script lang="ts">
     import { onMount } from "svelte";
 
