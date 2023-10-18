@@ -10,4 +10,4 @@ export * from "./ui/setting/ScoreCounter.svelte";
 export * from "./ui/setting/Star.svelte";
 export * from "./ui/setting/Switch.svelte";
 export * from "./ui/match-scout/DefenseButton.svelte";
-export * from "./ui/match/RobotList.svelte";
+export * from "./ui/match/TeamList.svelte";

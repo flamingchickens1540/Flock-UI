@@ -2,6 +2,11 @@
     import CatlystCarousel from "$lib/carousel/CatlystCarousel.svelte";
     import SingleChoices from "$lib/template/singleChoice/SingleChoices.svelte";
     import MultipleChoices from "$lib/template/multipleChoice/MultipleChoices.svelte";
+    import TeamList from "$lib/ui/match/TeamList.svelte";
+    import Stackable from "$lib/ui/structure/Stackable.svelte";
+
+    let teamNumbers1 = ["1540", "100", "78"];
+    let teamNumbers2 = ["1541", "200", "88"];
 </script>
 
 <style>
@@ -9,17 +14,23 @@
         min-width: 95vw;
         max-width: 95vw;
     }
+
+    .TeamNumber {
+        color:white;
+        border-radius: 10px;
+        border-width: 3px;
+        border-color:black;
+        border-style: solid;
+        padding:10px;
+        width:100px;
+        text-align: center;
+    }
 </style>
 
-<CatlystCarousel speed={2.5} style="margin:2.5vw">
+<CatlystCarousel speed={2.5} style="margin:2.5vw;">
     <div class="carriage">
         <SingleChoices/>
         <MultipleChoices/>
-    </div>
-    <div class="carriage">
-        <SingleChoices/>
-        <MultipleChoices/>
-        <p>f</p>
     </div>
     <div class="carriage">
         <SingleChoices/>
@@ -30,4 +41,24 @@
         <SingleChoices/>
         <MultipleChoices/>
     </div>
+</CatlystCarousel>
+<CatlystCarousel style="margin:2.5vw;">
+    {#each [1, 1, 1] as h}
+        <div class="carriage">
+            <div style="display:flex;flex-direction:row;">
+                <TeamList teamNumbers={teamNumbers1} let:teamNumber let:index>
+                    <Stackable horizontal stack={index != 0}>
+                        <div class="TeamNumber" style="background-color:red;">{teamNumber}</div>
+                    </Stackable>
+                </TeamList>
+            </div>
+            <div style="display:flex;flex-direction:row;">
+                <TeamList teamNumbers={teamNumbers2} let:teamNumber let:index>
+                    <Stackable horizontal stack={index != 0}>
+                        <div class="TeamNumber" style="background-color:blue;">{teamNumber}</div>
+                    </Stackable>
+                </TeamList>
+            </div>
+        </div>
+    {/each}
 </CatlystCarousel>
