@@ -1,13 +1,13 @@
-export * from "./carousel/CatlystCarousel.svelte";
-export * from "./ui/structure/Stackable.svelte";
-export * from "./ui/structure/option/Option.svelte";
-export * from "./ui/structure/option/OptionChoices.svelte";
-export * from "./template/singleChoice/SingleChoice.svelte";
-export * from "./template/singleChoice/SingleChoices.svelte"
-export * from "./template/multipleChoice/MultipleChoice.svelte";
-export * from "./template/multipleChoice/MultipleChoices.svelte";
-export * from "./ui/setting/ScoreCounter.svelte";
-export * from "./ui/setting/Star.svelte";
-export * from "./ui/setting/Switch.svelte";
-export * from "./ui/match-scout/DefenseButton.svelte";
-export * from "./ui/match/TeamList.svelte";
+export * as CatlystCarousel from "./carousel/CatlystCarousel.svelte";
+export * as Stackable from "./ui/structure/Stackable.svelte";
+export * as Option from "./ui/structure/option/Option.svelte";
+export * as OptionChoices from "./ui/structure/option/OptionChoices.svelte";
+export * as SingleChoice from "./template/singleChoice/SingleChoice.svelte";
+export * as SingleChoices from "./template/singleChoice/SingleChoices.svelte"
+export * as MultipleChoice from "./template/multipleChoice/MultipleChoice.svelte";
+export * as MultipleChoices from "./template/multipleChoice/MultipleChoices.svelte";
+export * as ScoreCounter from "./ui/setting/ScoreCounter.svelte";
+export * as Star from "./ui/setting/Star.svelte";
+export * as Switch from "./ui/setting/Switch.svelte";
+export * as DefenseButton from "./ui/match-scout/DefenseButton.svelte";
+export * as RobotList from "./ui/match/RobotList.svelte";
