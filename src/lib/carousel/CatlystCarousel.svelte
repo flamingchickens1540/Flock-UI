@@ -56,18 +56,6 @@
         lastMouseX = x;
     }
 
-    function calculateSnaps() {
-        const snaps = [];
-
-        const offset = content.children[0].getBoundingClientRect().x
-
-        for(const child of content.children) {
-            snaps.push(child.getBoundingClientRect().left - offset);
-        }
-
-        return snaps;
-    }
-
     function snap() {
         let closest : number = 0;
         for(const child of content.children) {
