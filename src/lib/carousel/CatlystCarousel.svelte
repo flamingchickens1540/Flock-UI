@@ -1,6 +1,8 @@
 <!-- 
     @component
 
+    Adds carousel carriage behaviors to the child element in this component.
+
     ```svelte
     <CatlystCarousel style="margin:2.5vw" speed={2} snapSeconds={0.2} shouldSnap>
         {elements}
@@ -9,6 +11,9 @@
      - speed : speed of the carousel
      - snapSeconds : how long it takes for the carousel to snap 
      - shouldSnap : if the carousel should snap (defaults true)
+
+    Notes:
+    If the child element/carriages move are resizing when they are not meant to do so, define a min-width and a max-width in the style of the child elements.
  -->
 
 <script lang="ts">
@@ -24,8 +29,6 @@
     export let snapSeconds : number = 0.2;
 
     export let shouldSnap : boolean = true;
-
-    let snaps : number[];
 
     let content : HTMLDivElement;
 
@@ -48,13 +51,13 @@
     function handlemousemove(x : number) {
         if(mouseup) return;
 
-        margin = Math.max(Math.min(margin + (x - lastMouseX) * speed, 0), -snaps[snaps.length - 1]);
+        margin = Math.max(Math.min(margin + (x - lastMouseX) * speed, 0), -content.clientWidth);
 
         lastMouseX = x;
     }
 
     function calculateSnaps() {
-        snaps = [];
+        const snaps = [];
 
         const offset = content.children[0].getBoundingClientRect().x
 
@@ -62,21 +65,22 @@
             snaps.push(child.getBoundingClientRect().left - offset);
         }
 
-        snap();
+        return snaps;
     }
 
     function snap() {
         let closest : number = 0;
-        for(const snap of snaps) {
-            if(Math.abs(margin + snap) < Math.abs(margin + closest)) closest = snap;
+        for(const child of content.children) {
+            const left = child.getBoundingClientRect().left - content.children[0].getBoundingClientRect().x;
+            if(Math.abs(margin + left) < Math.abs(margin + closest)) closest = left;
         }
         
         margin = -closest;
     }
 
     onMount(() => {
-        addEventListener("resize", calculateSnaps);
-        calculateSnaps();
+        addEventListener("resize", snap);
+        snap();
     });
 </script>
 
