@@ -47,5 +47,12 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/flamingchickens1540/Flock-UI.git"
-	}
+	},
+	"keywords": [
+		"frc",
+		"flamingchickens1540",
+		"svelte",
+		"front-end",
+		"component-library"
+	]
 }
