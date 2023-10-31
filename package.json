@@ -54,5 +54,6 @@
 		"svelte",
 		"front-end",
 		"component-library"
-	]
+	],
+	"license": "MIT"
 }

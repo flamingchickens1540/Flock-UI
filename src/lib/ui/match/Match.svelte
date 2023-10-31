@@ -1,7 +1,12 @@
 <script lang="ts">
-    export let redAlliance : string[] = [];
-    export let blueAlliance : string[] = [];
+    export let redAlliance : string[];
+    export let blueAlliance : string[];
 </script>
 
+{#each redAlliance as teamNumber}
+    <slot teamNumber={teamNumber} redAlliance={true}/>
+{/each}
 
-<slot redAlliance={redAlliance} blueAlliance={blueAlliance}/>
+{#each blueAlliance as teamNumber}
+    <slot teamNumber={teamNumber} redAlliance={false}/>
+{/each}
