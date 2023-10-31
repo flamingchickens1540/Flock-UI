@@ -10,7 +10,6 @@ import ScoreCounter from "./ui/setting/ScoreCounter.svelte";
 import Star from "./ui/setting/Star.svelte";
 import Switch from "./ui/setting/Switch.svelte";
 import DefenseButton from "./ui/match-scout/DefenseButton.svelte";
-import TeamList from "./ui/match/TeamList.svelte";
 
 export {
     CatlystCarousel,
@@ -24,6 +23,5 @@ export {
     ScoreCounter,
     Star,
     DefenseButton,
-    TeamList,
     Switch
 };
