@@ -24,7 +24,7 @@
     }
 </style>
 
-<div class="match darkTheme">
+<div class="match">
     {#if typeof subHeader == "number"}
         <slot name="comingUpHeader"/>
     {:else}
