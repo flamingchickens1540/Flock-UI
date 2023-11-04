@@ -16,25 +16,6 @@
         display: flex;
     }
 
-    .team {
-        border-radius: 20px;
-        width: 4em;
-        text-align: center;
-        margin: 0.1em;
-        padding: 0.2em;
-        font-size: 100%;
-        color:white;
-    }
-
-    .tag {
-        background-color: #aa55ff;
-        color: white;
-        border-radius: 10px;
-        padding: 3.5px;
-        font-size: 75%;
-        width: fit-content;
-    }
-
     .match {
         background-color: black;
         border-radius: 20px;
@@ -57,26 +38,20 @@
         </div>
     {:else}
         {#each subHeader as teamNumber, index}
-            <div class="team tag">
-                <slot alliance={"purple"} teamNumber={teamNumber} index={index}/>
-            </div>
+            <slot alliance={"purple"} teamNumber={teamNumber} index={index}/>
         {/each}
     {/if}
 
     <div class="alliance">
         {#each redAlliance as teamNumber, index}
-            <div class="team" style="background-color: red;">
-                <!-- slot used so that the team numbers are changeable in admin dashboard -->
-                <slot alliance={"red"} teamNumber={teamNumber} index={index}/>
-            </div>
+            <!-- slot used so that the team numbers are changeable in admin dashboard -->
+            <slot alliance={"red"} teamNumber={teamNumber} index={index}/>
         {/each}
     </div>
 
     <div class="alliance">
         {#each blueAlliance as teamNumber, index}
-            <div class="team" style="background-color: blue;">
-                <slot alliance={"blue"} teamNumber={teamNumber} index={index}/>
-            </div>
+            <slot alliance={"blue"} teamNumber={teamNumber} index={index}/>
         {/each}
     </div>
 </div>
