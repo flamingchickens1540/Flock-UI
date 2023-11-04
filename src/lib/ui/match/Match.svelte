@@ -6,21 +6,9 @@
 </script>
 
 <style>
-    .subHeader {
-        color: white;
-        text-align: left;
-    }
-
     .alliance {
         flex-direction: row;
         display: flex;
-    }
-
-    .match {
-        background-color: black;
-        border-radius: 20px;
-        width: fit-content;
-        padding: 10px;
     }
 </style>
 
@@ -32,10 +20,8 @@
     {/if}
 
     {#if typeof subHeader == "number"}
-        <div class="subHeader">
-            <!-- match in milliseconds to minutes -->
-            Game starts in {(subHeader - Date.now()) / 60000}m
-        </div>
+        <!-- match in milliseconds to minutes -->
+        <slot name="gameStartsIn"/>
     {:else}
         {#each subHeader as teamNumber, index}
             <slot alliance={"purple"} teamNumber={teamNumber} index={index}/>
